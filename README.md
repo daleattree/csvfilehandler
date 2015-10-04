@@ -16,25 +16,28 @@ Add the following to your composer.json file using the latest version number or 
 
 <h2>Usage</h2>
 
-```PHP
-$csvFileHandler = new daleattree\CsvFileHandler\CsvFileHandler($filename, [$headerRow = true], [$delimiter = ','], [$enclosure = '"'], [$escape = '\\']);
+```php
+$csvFileHandler = new daleattree\CsvFileHandler\CsvFileHandler($filename, [$headerRow = true], [$delimiter = ','], [$enclosure = '"'], [$escape = '\\']);```
 
 <h3>Example</h3>
 
-CSV File Content
+<b>CSV File Content</b>
+<pre>
 id,greeting1,greeting2,salutation
 1,"Regards, Test",hello,"there"
+</pre>
 
-
-```
+```php
 foreach($csvFileHandler->getRecords() as $record){
   echo $record->getId() . PHP_EOL . $record->getGreeting2()() . ' ' . $record->getSalutation() . PHP_EOL . $record->getGreeting1() . PHP_EOL;
 }```
 
-OUTPUT
-1
-hello there
+<b>OUTPUT</b>
+<pre>
+1<br/>
+hello there<br/>
 Regards, Test
+</pre>
 
 <p>If there is a header row, the column names will be camel-cased and accessible on RecordObject via get[ColumnName] and set[ColumnName]</p>
 <p>If there is no header row, column names default to col[n], n being the column index (zero-based).</p>
