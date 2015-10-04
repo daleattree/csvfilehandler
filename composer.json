@@ -25,6 +25,5 @@
     "psr-4": {
       "daleattree\\CsvFileHandler\\" : "src/"
     }
-  },
-  "target-dir": "daleattree/csvfilehandler"
+  }
 }
