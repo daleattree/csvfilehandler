@@ -1,7 +1,7 @@
 CSV File Handler (CsvFileHandler)
 =================================
 
-A library that loads and parses a CSV file, returning an object of the file with each CSV line as an object (Licence: GPL-2.0)
+A library that loads and parses a CSV file, returning an object of the file with each CSV line as an object (License: GPL-2.0)
 
 <h2>Installation</h2>
 
@@ -21,24 +21,21 @@ $csvFileHandler = new daleattree\CsvFileHandler\CsvFileHandler($filename, [$head
 
 <h3>Example</h3>
 
-<b>CSV File Content</b>
-<pre>
+CSV File Content
 id,greeting1,greeting2,salutation
 1,"Regards, Test",hello,"there"
-</pre>
+
 
 ```PHP
 foreach($csvFileHandler->getRecords() as $record){
   echo $record->getId() . PHP_EOL . $record->getGreeting2()() . ' ' . $record->getSalutation() . PHP_EOL . $record->getGreeting1() . PHP_EOL;
 }```
 
-<b>OUTPUT</b>
-<pre>
-1<br/>
-hello there<br/>
+OUTPUT
+1
+hello there
 Regards, Test
-</pre>
 
-<p>If there is a header row, the column names will be camel-cased and accessible on RecordObject via get[ColumnName] and set[ColumnName]</p>
-<p>If there is no header row, column names default to col[n], n being the column index (zero-based).</p>
-<p></p>
+If there is a header row, the column names will be camel-cased and accessible on RecordObject via get[ColumnName] and set[ColumnName]
+If there is no header row, column names default to col[n], n being the column index (zero-based).
+
