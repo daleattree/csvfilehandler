@@ -104,7 +104,7 @@ class CsvFileHandler
      */
     public function setDelimiter($delimiter)
     {
-        if(strlen($delimiter)){
+        if(1 != strlen($delimiter)){
             throw new \Exception("One character only for delimited");
         }
 
@@ -127,7 +127,7 @@ class CsvFileHandler
      */
     public function setEnclosure($enclosure)
     {
-        if(strlen($enclosure)){
+        if(1 != strlen($enclosure)){
             throw new \Exception("One character only for enclosure");
         }
 
@@ -150,7 +150,7 @@ class CsvFileHandler
      */
     public function setEscape($escape)
     {
-        if(strlen($escape)){
+        if(1 != strlen($escape)){
             throw new \Exception("One character only for escape");
         }
         $this->escape = $escape;
