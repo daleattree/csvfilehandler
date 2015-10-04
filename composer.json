@@ -1,0 +1,30 @@
+{
+  "name": "daleattree/csvfilehandler",
+  "description": "A library that loads and parses a CSV file, returning an object of the file with each CSV line as an object",
+  "prefer-stable": true,
+  "license": "GPL-2.0",
+  "version": "1.0.0",
+  "time": "2015-10-04",
+  "authors": [
+    {
+      "name": "Dale Attree",
+      "email": "dale.attree@gmail.com",
+      "homepage": "https://github.com/daleattree",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/daleattree/csvfilehandler/issues",
+    "wiki": "https://github.com/daleattree/csvfilehandler/wiki",
+    "source": "https://github.com/daleattree/csvfilehandler"
+  },
+  "require": {
+    "php": ">=5.3.3"
+  },
+  "autoload" : {
+    "psr-4": {
+      "daleattree\\CsvFileHandler\\" : "src/"
+    }
+  },
+  "target-dir": "daleattree/csvfilehandler"
+}
