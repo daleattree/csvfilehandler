@@ -9,31 +9,34 @@ A library that loads and parses a CSV file, returning an object of the file with
 
 Add the following to your composer.json file using the latest version number or 1.0.* to keep it fresh:
 
-```JSON```<br/>
-```"require": {```<br/>
-``` "daleattree/csvfilehandler": "1.0.*"```<br/>
-```}```
+```JSON
+"require": {
+  "daleattree/csvfilehandler": "1.0.*"
+}```
 
 <h2>Usage</h2>
 
-```PHP```
-```$csvFileHandler = new daleattree\CsvFileHandler\CsvFileHandler($filename, [$headerRow = true], [$delimiter = ','], [$enclosure = '"'], [$escape = '\\']);```
+```PHP
+$csvFileHandler = new daleattree\CsvFileHandler\CsvFileHandler($filename, [$headerRow = true], [$delimiter = ','], [$enclosure = '"'], [$escape = '\\']);
+```
 
 <h3>Example</h3>
 
-```CSV File Content```<br/>
-```id,greeting1,greeting2,salutation```<br/>
-```1,"Regards, Test",hello,"there"```<br/>
+```CSV File Content
+id,greeting1,greeting2,salutation
+1,"Regards, Test",hello,"there"
+```
 
-```PHP```<br/>
-```foreach($csvFileHandler->getRecords() as $record){```<br/>
-```echo $record->getId() . PHP_EOL . $record->getGreeting2()() . ' ' . $record->getSalutation() . PHP_EOL . $record->getGreeting1() . PHP_EOL;```<br/>
-```}```<br/>
+```PHP
+foreach($csvFileHandler->getRecords() as $record){
+  echo $record->getId() . PHP_EOL . $record->getGreeting2()() . ' ' . $record->getSalutation() . PHP_EOL . $record->getGreeting1() . PHP_EOL;
+}```
 
-```OUTPUT```<br/>
-```1```<br/>
-```hello there```<br/>
-```Regards, Test```<br/>
+```OUTPUT
+1
+hello there
+Regards, Test
+```
 
 <p>If there is a header row, the column names will be camel-cased and accessible on RecordObject via get[ColumnName] and set[ColumnName]</p>
 <p>If there is no header row, column names default to col[n], n being the column index (zero-based).</p>
