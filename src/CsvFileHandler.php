@@ -196,19 +196,19 @@ class CsvFileHandler
      * @internal
      */
     protected function parseFile(){
-        $data = file($this->getFilename());
+        $fp = fopen($this->getFilename(), 'r');
 
         $headers = null;
         if($this->getHeaderRow()) {
-            $headerLine = array_shift($data);
-            $headers = str_getcsv($headerLine, $this->getDelimiter(), $this->getEnclosure(), $this->getEscape());
+            $headers = fgetcsv($fp, null, $this->getDelimiter(), $this->getEnclosure(), $this->getEscape());
         }
 
-        foreach($data as $line){
-            $values = str_getcsv($line, $this->getDelimiter(), $this->getEnclosure(), $this->getEscape());
+        while ($values = fgetcsv($fp, null, $this->getDelimiter(), $this->getEnclosure(), $this->getEscape())) {
             $record = new RecordObject($headers, $values);
             $this->addRecord($record);
         }
+
+        fclose($fp);
 
     }
 }
