@@ -13,11 +13,14 @@ Add the following to your composer.json file using the latest version number or 
 "require": {
   "daleattree/csvfilehandler": "1.0.*"
 }
+```
 
 <h2>Usage</h2>
 
+
 ```PHP
-$csvFileHandler = new daleattree\CsvFileHandler\CsvFileHandler($filename, [$headerRow = true], [$delimiter = ','], [$enclosure = '"'], [$escape = '\\']);```
+$csvFileHandler = new daleattree\CsvFileHandler\CsvFileHandler($filename, [$headerRow = true], [$delimiter = ','], [$enclosure = '"'], [$escape = '\\']);
+```
 
 <h3>Example</h3>
 
@@ -29,7 +32,8 @@ id,greeting1,greeting2,salutation
 ```PHP
 foreach($csvFileHandler->getRecords() as $record){
   echo $record->getId() . PHP_EOL . $record->getGreeting2()() . ' ' . $record->getSalutation() . PHP_EOL . $record->getGreeting1() . PHP_EOL;
-}```
+}
+```
 
 OUTPUT
 1
