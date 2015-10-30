@@ -105,7 +105,7 @@ class CsvFileHandler
     public function setDelimiter($delimiter)
     {
         if(1 != strlen($delimiter)){
-            throw new \Exception("One character only for delimited");
+            throw new \Exception("One character only for delimiter");
         }
 
         $this->delimiter = $delimiter;
