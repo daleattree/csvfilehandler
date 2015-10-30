@@ -62,13 +62,13 @@ class RecordObject
      * Overload of magic set function
      * @param $name
      * @param $arguments
-     * @throws Exception
+     * @throws \Exception
      */
     public function __set($name, $arguments){
         $key = $this->formatKey($name);
 
         if(!array_key_exists($key, $this->data)){
-            throw Exception("Unknown column: " . $name . ". Unable to set value");
+            throw new \Exception("Unknown column: " . $name . ". Unable to set value");
         }
 
         if(count($arguments) == 1){
@@ -82,13 +82,13 @@ class RecordObject
      * Overload of magic get function
      * @param $name
      * @return mixed
-     * @throws Exception
+     * @throws \Exception
      */
     public function __get($name){
         $key = $this->formatKey($name);
 
         if(!array_key_exists($key, $this->data)){
-            throw Exception("Unknown column: " . $name . ". Unable to get value");
+            throw new \Exception("Unknown column: " . $name . ". Unable to get value");
         }
 
         return $this->data[$key];
@@ -99,7 +99,7 @@ class RecordObject
      * @param $name
      * @param $arguments
      * @return mixed|void
-     * @throws Exception
+     * @throws \Exception
      */
     public function __call($name, $arguments){
         $action = substr($name, 0, 3);
