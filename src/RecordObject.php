@@ -46,11 +46,7 @@ class RecordObject
         $field = explode("_", $header);
 
         foreach($field as $k => $v){
-            if($k > 0) {
-                $field[$k] = ucfirst(strtolower($v));
-            } else {
-                $field[$k] = strtolower($v);
-            }
+            $field[$k] = ucfirst(strtolower($v));
         }
 
         $header = implode("", $field);
