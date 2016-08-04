@@ -11,10 +11,10 @@ class headersTest extends PHPUnit_Framework_TestCase
         foreach($records as $record){
             /** @var $record daleattree\CsvFileHandler\RecordObject */
 
-            $this->assertArrayHasKey('col0', $record->getData());
-            $this->assertArrayHasKey('col1', $record->getData());
-            $this->assertArrayHasKey('col2', $record->getData());
-            $this->assertArrayHasKey('col3', $record->getData());
+            $this->assertArrayHasKey('Col0', $record->getData());
+            $this->assertArrayHasKey('Col1', $record->getData());
+            $this->assertArrayHasKey('Col2', $record->getData());
+            $this->assertArrayHasKey('Col3', $record->getData());
         }
     }
 }
