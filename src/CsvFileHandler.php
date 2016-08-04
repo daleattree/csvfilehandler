@@ -38,7 +38,7 @@ class CsvFileHandler
     /**
      * @var string
      */
-    protected $escape  = '\\';
+    protected $escape = '\\';
 
     /**
      * Specify file for loading. Configuration settings optional
@@ -49,22 +49,23 @@ class CsvFileHandler
      * @param string $escape
      * @throws \Exception
      */
-    public function __construct($filename, $headerRow = true, $delimiter = ',', $enclosure = '"', $escape = '\\'){
-        if(!file_exists($filename)){
+    public function __construct($filename, $headerRow = true, $delimiter = ',', $enclosure = '"', $escape = '\\')
+    {
+        if (!file_exists($filename)) {
             throw new \Exception($filename . " not found");
         }
 
         $this->setHeaderRow($headerRow);
 
-        if($delimiter != $this->getDelimiter()){
+        if ($delimiter != $this->getDelimiter()) {
             $this->setDelimiter($delimiter);
         }
 
-        if($enclosure != $this->getEnclosure()){
+        if ($enclosure != $this->getEnclosure()) {
             $this->setEnclosure($enclosure);
         }
 
-        if($escape != $this->getEscape()){
+        if ($escape != $this->getEscape()) {
             $this->setEscape($escape);
         }
 
@@ -104,7 +105,7 @@ class CsvFileHandler
      */
     public function setDelimiter($delimiter)
     {
-        if(1 != strlen($delimiter)){
+        if (1 != strlen($delimiter)) {
             throw new \Exception("One character only for delimiter");
         }
 
@@ -127,7 +128,7 @@ class CsvFileHandler
      */
     public function setEnclosure($enclosure)
     {
-        if(1 != strlen($enclosure)){
+        if (1 != strlen($enclosure)) {
             throw new \Exception("One character only for enclosure");
         }
 
@@ -150,7 +151,7 @@ class CsvFileHandler
      */
     public function setEscape($escape)
     {
-        if(1 != strlen($escape)){
+        if (1 != strlen($escape)) {
             throw new \Exception("One character only for escape");
         }
         $this->escape = $escape;
@@ -187,7 +188,8 @@ class CsvFileHandler
      * Add RecordObject to array representative of each line in the file
      * @param RecordObject $record
      */
-    public function addRecord(RecordObject $record){
+    public function addRecord(RecordObject $record)
+    {
         $this->records[] = $record;
     }
 
@@ -195,15 +197,20 @@ class CsvFileHandler
      * Load file into array and convert each line to RecordObject
      * @internal
      */
-    protected function parseFile(){
+    protected function parseFile()
+    {
         $fp = fopen($this->getFilename(), 'r');
 
         $headers = null;
-        if($this->getHeaderRow()) {
+        if ($this->getHeaderRow()) {
             $headers = fgetcsv($fp, null, $this->getDelimiter(), $this->getEnclosure(), $this->getEscape());
         }
 
-        while ($values = fgetcsv($fp, null, $this->getDelimiter(), $this->getEnclosure(), $this->getEscape())) {
+        while (($values = fgetcsv($fp, null, $this->getDelimiter(), $this->getEnclosure(), $this->getEscape())) !== false) {
+            if (is_null($values)) {
+                continue;
+            }
+
             $record = new RecordObject($headers, $values);
             $this->addRecord($record);
         }
