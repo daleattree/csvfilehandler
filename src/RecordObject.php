@@ -55,7 +55,7 @@ class RecordObject
         $header = str_replace(' ', '_', $header);
 
         //remove anything that is not a number, letter or underscore
-        $header = preg_replace('/[^0-9a-zA-Z_/', '', $header);
+        $header = preg_replace('/[^0-9a-zA-Z_]/', '', $header);
 
         $field = explode("_", $header);
 
@@ -76,9 +76,8 @@ class RecordObject
      * @throws \Exception
      */
     public function __set($name, $arguments){
-        $key = $this->formatKey($name);
 
-        if(!array_key_exists($key, $this->data)){
+        if(!array_key_exists($name, $this->data)){
             throw new \Exception("Unknown column: " . $name . ". Unable to set value");
         }
 
@@ -86,7 +85,7 @@ class RecordObject
             $arguments = array_shift($arguments);
         }
 
-        $this->data[$key] = $arguments;
+        $this->data[$name] = $arguments;
     }
 
     /**
@@ -96,13 +95,12 @@ class RecordObject
      * @throws \Exception
      */
     public function __get($name){
-        $key = $this->formatKey($name);
 
-        if(!array_key_exists($key, $this->data)){
+        if(!array_key_exists($name, $this->data)){
             throw new \Exception("Unknown column: " . $name . ". Unable to get value");
         }
 
-        return $this->data[$key];
+        return $this->data[$name];
     }
 
     /**

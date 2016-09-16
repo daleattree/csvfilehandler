@@ -3,7 +3,7 @@
   "description": "A library that loads and parses a CSV file, returning an object of the file with each CSV line as an object",
   "prefer-stable": true,
   "license": "GPL-2.0",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "time": "2016-01-11",
   "authors": [
     {
