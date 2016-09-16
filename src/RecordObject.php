@@ -32,7 +32,7 @@ class RecordObject
         $this->headers = $headers;
 
         foreach($headers as $k => $v){
-            $key = $this->formatKey($v);
+            $key = $this->formatKey($v, $k);
             $this->data[$key] = $values[$k];
         }
     }
@@ -40,11 +40,26 @@ class RecordObject
     /**
      * Camel-cases column names
      * @param $header
+     * @param $index
      * @return string
      */
-    private function formatKey($header){
+    private function formatKey($header, $index){
+        $header = trim($header);
+
+        //if header is empty, revert to default naming
+        if(empty($header)){
+            $header = 'col' . $index;
+        }
+
+        //replace spaces with underscores to allow for camel casing
+        $header = str_replace(' ', '_', $header);
+
+        //remove anything that is not a number, letter or underscore
+        $header = preg_replace('/[^0-9a-zA-Z_/', '', $header);
+
         $field = explode("_", $header);
 
+        //camel case the column header
         foreach($field as $k => $v){
             $field[$k] = ucfirst(strtolower($v));
         }
