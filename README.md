@@ -19,7 +19,7 @@ Add the following to your composer.json file using the latest version number or 
 
 
 ```PHP
-$csvFileHandler = new daleattree\CsvFileHandler\CsvFileHandler($filename, [$headerRow = true], [$delimiter = ','], [$enclosure = '"'], [$escape = '\\']);
+$csvFileHandler = new daleattree\CsvFileHandler\CsvFileHandler($filename, [$headerRow = true], [$delimiter = ','], [$enclosure = '"'], [$escape = '\\'], [$autoParse = true]);
 ```
 
 ###Example
@@ -36,6 +36,13 @@ foreach($csvFileHandler->getRecords() as $record){
   echo $record->getId() . PHP_EOL . 
   $record->getGreeting2()() . ' ' . $record->getSalutation() . PHP_EOL . 
   $record->getGreeting1() . PHP_EOL;
+}
+```
+
+If the CSV file is too large for it to be efficiently loaded into memory, you can set $autoParse to false and read one line at a time from the file.
+```PHP
+while(false != ($row = $this->handler->readRecord())){
+    //do something
 }
 ```
 
