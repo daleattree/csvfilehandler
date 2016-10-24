@@ -285,7 +285,7 @@ class CsvFileHandler
 
         $this->incrementRecordIndex();
 
-        if (is_null($values)) {
+        if (empty($values)) {
             return null;
         }
 
