@@ -41,7 +41,7 @@ foreach($csvFileHandler->getRecords() as $record){
 
 If the CSV file is too large for it to be efficiently loaded into memory, you can set $autoParse to false and read one line at a time from the file.
 ```PHP
-while(false != ($row = $this->handler->readRecord())){
+while(false !== ($row = $this->handler->readRecord())){
     //do something
 }
 ```

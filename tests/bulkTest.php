@@ -16,7 +16,7 @@ class bulkTest extends PHPUnit_Framework_TestCase
         $expected = 2000000;
 
         $counter = 0;
-        while(false != ($row = $this->handler->readRecord())){
+        while(false !== ($row = $this->handler->readRecord())){
             $counter += 1;
         }
 
