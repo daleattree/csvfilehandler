@@ -16,13 +16,13 @@ namespace daleattree\CsvFileHandler;
  */
 class CsvFileHandler
 {
-    /** @var String */
+    /** @var string */
     protected $filename;
 
-    /** @var Array */
+    /** @var array */
     protected $records;
 
-    /** @var Boolean */
+    /** @var boolean */
     protected $headerRow;
 
     /** @var string */
@@ -166,7 +166,7 @@ class CsvFileHandler
 
     /**
      * Get filename as specified in constructor
-     * @return String
+     * @return string
      */
     public function getFilename()
     {
@@ -175,7 +175,7 @@ class CsvFileHandler
 
     /**
      * Set filename for parsing
-     * @param String $filename
+     * @param string $filename
      */
     protected function setFilename($filename)
     {
@@ -184,7 +184,7 @@ class CsvFileHandler
 
     /**
      * Get array of RecordObject representing lines in the file
-     * @return Array
+     * @return array
      */
     public function getRecords()
     {
@@ -204,6 +204,7 @@ class CsvFileHandler
         $fp = fopen($this->getFilename(), 'r');
         $this->setFilePointer($fp);
     }
+
     /**
      * @return null
      */
